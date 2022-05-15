@@ -17,9 +17,6 @@ public class MoveManager
         public EaseType easeType;   //头尾渐入渐出类型.
     }
     /// <summary>
-    /// 渐入渐出枚举.
-    /// </summary>
-    /// <summary>
     /// 位移动画的类(这里采用链式编程,能提升扩展性(比如可以加入SetDelay等方法),并且调用起来非常清晰).
     /// </summary>
     public class Move
@@ -87,7 +84,7 @@ public class MoveManager
 
         public void OnUpdate()
         {
-            //当前插值的百分比.
+            //当前动画播放的进度百分比.
             float percent = (Time.time - m_startTime) / m_moveData.time;
             if (m_moveBack)
             {
@@ -181,6 +178,9 @@ public class MoveManager
         m_moveList.Clear();
     }
 }
+/// <summary>
+/// 渐入渐出枚举.
+/// </summary>
 public enum EaseType
 {
     None,       //无渐入渐出效果.
@@ -188,4 +188,3 @@ public enum EaseType
     EaseOut,    //缓慢渐出.
     EaseInOut,  //缓慢渐入+渐出.
 }
-

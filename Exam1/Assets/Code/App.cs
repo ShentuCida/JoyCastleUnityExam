@@ -11,14 +11,16 @@ public class App : MonoBehaviour
     public bool pingPong;
     public EaseType easeType;
     public float time;
-    GameObject obj;
+    private GameObject m_obj;
+    
     void Start()
     {
-        obj = GameObject.Find("MoveObj");
+        m_obj = GameObject.Find("MoveObj");
         Button testBtn = GameObject.Find("TestBtn").transform.GetComponent<Button>();
         testBtn.onClick.AddListener(() =>
         {
-            MoveManager.CreateMoveCommand(obj)
+            //调用示例.
+            MoveManager.CreateMoveCommand(m_obj)
             .FromTo(from, to, time)
             .SetPingPong(pingPong)
             .SetEaseType(easeType)
@@ -32,7 +34,6 @@ public class App : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveManager.Update();
